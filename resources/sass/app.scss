@@ -1,0 +1,22 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.share-tech-mono-regular {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bg-train{
+  background-image: url("https://images.pexels.com/photos/2422254/pexels-photo-2422254.jpeg?_gl=1*1l3wagy*_ga*NTM4ODAyMTQxLjE3NzExOTc4OTQ.*_ga_8JE65Q40S6*czE3NzExOTc4OTMkbzEkZzEkdDE3NzExOTgwMDAkajMzJGwwJGgw");
+  min-height: calc(100vh - 125px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
