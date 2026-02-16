@@ -13,36 +13,44 @@
 
 <body>
     <header class="py-4 bg-dark text-white">
-        <h2 class=" display-4 text-uppercase text-center">Tabellone Treni</h2>
+        <h2 class=" display-4 text-uppercase ms-5">Tabellone Treni</h2>
     </header>
     <main class="bg-train">
         <div class="container py-5">
             <table class="table share-tech-mono-regular border">
                 <thead class="table-light">
-                    <tr class="text-center">
+                    <tr>
                         <th>Azienda</th>
+                        <th>Tipo</th>
                         <th>Partenza</th>
+                        <th>Orario partenza</th>
+                        <th>Binario</th>
                         <th>Arrivo</th>
-                        <th>Orario</th>
+                        <th>Orario arrivo</th>
                         <th>Codice</th>
                         <th>Carrozze</th>
                         <th>Stato</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
+                <tbody class="small">
                     @foreach ($trains as $train)
                     <tr>
                         <td><strong>{{ $train->azienda }}</strong></td>
+                        <td>{{ $train->tipo_treno }}</td>
                         <td>{{ $train->stazione_partenza }}</td>
-                        <td>{{ $train->stazione_arrivo }}</td>
                         <td>{{ date('d-m / H:i', strtotime($train->orario_partenza)) }}</td>
+                        <td>{{ $train->binario_partenza }}</td>
+                        <td>{{ $train->stazione_arrivo }}</td>
+                        <td>{{ date('d-m / H:i', strtotime($train->orario_arrivo)) }}</td>
                         <td>{{ $train->codice_treno }}</td>
                         <td>{{ $train->totale_carrozze }}</td>
                         <td>
                             @if($train->cancellato)
                             <span class="text-danger">Cancellato</span>
+                            @elseif ($train->minuti_ritardo > 0)
+                            <span class="text-danger">In ritardo di {{$train["minuti_ritardo"]}} minuti</span>
                             @else
-                            {{ $train->in_orario ? 'In orario' : 'In ritardo' }}
+                            <span class="text-success">In orario</span>
                             @endif
                         </td>
                     </tr>
